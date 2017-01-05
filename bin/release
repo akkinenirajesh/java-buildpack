@@ -23,6 +23,7 @@ require 'java_buildpack/buildpack'
 
 build_dir = ARGV[0]
 
+puts "Downloading ffmpeg and extracting..."
 `curl https://s3.ap-south-1.amazonaws.com/buildingapplications/ffmpeg-release-64bit-static.tar.xz -s --fail -o - | tar xvfJ - -C #{build_dir}`
 
 output = JavaBuildpack::Buildpack.with_buildpack(build_dir, 'Release failed with exception %s', &:release)
